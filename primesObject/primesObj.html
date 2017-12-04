@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- add mocha css, to show results -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/4.0.1/mocha.css">
+  <!-- add mocha framework code -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/4.0.1/mocha.js"></script>
+  <script>
+    mocha.setup('bdd'); // minimal setup
+  </script>
+  <!-- add chai -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.1.2/chai.js"></script>
+  <script>
+    // chai has a lot of stuff, let's make assert global
+    let assert = chai.assert;
+  </script>
+</head>
+
+<body>
+
+  <script>
+  let primesObj = {
+      isPrime(n){
+          if(n < 2){
+            return false;
+          }
+          for(let i = 2; i < n; i++){
+              if(n % i == 0){
+                  return false;
+              }
+          }
+          return true;
+      },
+      showPrimes(n){
+        let primeArr = [];
+        if(n < 2){
+          return "enter at least 2";
+        }
+        for(let i = 2; i <= n; i++){
+          if(!this.isPrime(i)){
+            continue;
+          }
+          primeArr.push(i);
+        }
+        return primeArr.join(",");
+      }
+  }
+  </script>
+
+  <!-- the script with tests (describe, it...) -->
+  <script src="primesObj.js"></script>
+
+  <!-- the element with id="mocha" will contain test results -->
+  <div id="mocha"></div>
+
+  <!-- run tests! -->
+  <script>
+    mocha.run();
+  </script>
+</body>
+
+</html>
