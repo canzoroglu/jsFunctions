@@ -6,13 +6,11 @@ let findElemsInArr = {
   findElements(arr, ...args){
     let elMap = new Map(); //key is posElObj, value is count
     args.forEach(el => {
-      //let count = 0; //count for the searched elements
       let elPos = []; //array of postions of the searched elements
       let posElObj = {}; //key is searched el value is positions
       arr.forEach((e, i) => {
         if(e === el){
           elPos.push(i);
-          //count++;
         }
       });
       posElObj[el] = elPos;
